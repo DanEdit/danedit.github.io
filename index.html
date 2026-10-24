@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 
@@ -102,8 +102,8 @@
     <div class="zoom" data-zoom>
       <div class="zoom-sticky">
         <div class="zoom-media">
-          <img src="https://img.youtube.com/vi/ALi5dd7Y1z4/maxresdefault.jpg" alt="Streetlife Festival 2018 – Slalom Skater" loading="lazy">
-          <p class="zoom-caption">Streetlife Festival – über 81.000 Aufrufe</p>
+          <img src="https://img.youtube.com/vi/6LQJoPJkbT0/maxresdefault.jpg" alt="IAA Mobility 2023 Open Space" loading="lazy">
+          <p class="zoom-caption">IAA Mobility 2023 – Open Space</p>
         </div>
       </div>
     </div>
@@ -126,10 +126,23 @@
     <div class="wrap">
       <p class="eyebrow reveal">MakerWorld</p>
       <h2 class="chapter-title reveal">Gedruckt. Geteilt.</h2>
-      <div class="cube-stage" data-cube>
-        <div class="cube">
-          <i class="f1"></i><i class="f2"></i><i class="f3"></i><i class="f4"></i><i class="f5"></i><i class="f6"></i>
+      <!-- 3D-Drucker aus reinem CSS: dreht sich beim Scrollen, das Druckteil wächst -->
+      <div class="cube-stage" data-cube role="img" aria-label="3D-Drucker">
+        <div class="printer">
+          <div class="box body" style="--w:220px;--h:220px;--d:220px"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
+          <div class="box ams" style="--w:200px;--h:52px;--d:150px;transform:translate3d(0,-136px,0)">
+            <i class="fr"><b></b><b></b><b></b><b></b></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i>
+          </div>
+          <div class="box plate" style="--w:176px;--h:6px;--d:176px;transform:translate3d(0,72px,0)"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
+          <div class="print-grow">
+            <div class="box print" style="--w:56px;--h:44px;--d:56px;transform:translate3d(0,-22px,0)"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
+          </div>
+          <div class="box rod" style="--w:196px;--h:6px;--d:6px;transform:translate3d(0,-30px,0)"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
+          <div class="head-move">
+            <div class="box head" style="--w:42px;--h:48px;--d:42px;transform:translate3d(0,-30px,0)"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
+          </div>
         </div>
+        <div class="printer-shadow"></div>
       </div>
       <p class="lightup" data-lightup>Am Rechner konstruiert, auf dem Drucker getestet und kostenlos geteilt: praktische Teile für den Alltag – von der 19-Zoll-Rack-Blende bis zur eScooter-Wandhalterung.</p>
       <div class="stats reveal">
@@ -195,6 +208,6 @@
 
   <div class="toast" id="toast" role="status"></div>
 
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>
