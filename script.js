@@ -111,7 +111,7 @@ document.querySelectorAll(".thumb[data-video-id]").forEach((thumb) => {
   const id = thumb.dataset.videoId.trim();
   if (!id) return;
   const img = document.createElement("img");
-  img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+  img.src = `https://img.youtube.com/vi/${id}/mqdefault.jpg`;
   img.alt = "";
   img.loading = "lazy";
   thumb.prepend(img);
