@@ -195,25 +195,8 @@ button { font: inherit; cursor: pointer; }
 .card-glyph { position: absolute; width: 58%; left: 21%; bottom: 14%; fill: #d62976; opacity: 0.9; transition: transform 1s var(--ease); }
 .card-ig:hover .card-glyph { transform: rotate(-8deg) scale(1.05); }
 
-/* Kleiner Würfel in der MakerWorld-Karte */
-.mini-cube {
-  position: absolute;
-  left: 50%;
-  bottom: 26%;
-  width: 140px;
-  height: 140px;
-  margin-left: -70px;
-  transform-style: preserve-3d;
-  animation: spin 14s linear infinite;
-}
-.mini-cube i { position: absolute; inset: 0; border-radius: 18px; background: linear-gradient(135deg, #34c759, #00875a); opacity: 0.92; }
-.mini-cube i:nth-child(1) { transform: translateZ(70px); }
-.mini-cube i:nth-child(2) { transform: rotateY(180deg) translateZ(70px); }
-.mini-cube i:nth-child(3) { transform: rotateY(90deg) translateZ(70px); filter: brightness(0.85); }
-.mini-cube i:nth-child(4) { transform: rotateY(-90deg) translateZ(70px); filter: brightness(0.85); }
-.mini-cube i:nth-child(5) { transform: rotateX(90deg) translateZ(70px); filter: brightness(1.15); }
-.mini-cube i:nth-child(6) { transform: rotateX(-90deg) translateZ(70px); filter: brightness(0.7); }
-@keyframes spin { from { transform: rotateX(-22deg) rotateY(0); } to { transform: rotateX(-22deg) rotateY(360deg); } }
+/* 3D-Modell in der MakerWorld-Karte */
+.card-model { position: absolute; left: 0; right: 0; bottom: 10%; height: 55%; }
 
 .gallery-controls { display: flex; justify-content: center; margin-top: 20px; }
 .dots { display: flex; gap: 10px; padding: 12px 18px; border-radius: 980px; background: rgba(210, 210, 215, 0.6); backdrop-filter: blur(10px); }
@@ -300,71 +283,12 @@ button { font: inherit; cursor: pointer; }
 }
 .stats small { color: var(--muted); font-size: 1.05rem; font-weight: 500; }
 
-/* 3D-Drucker aus CSS-Quadern, dreht sich mit dem Scrollen */
-.cube-stage { --r: 0; position: relative; height: 440px; display: grid; place-items: center; perspective: 1400px; }
-.printer {
-  position: relative;
-  width: 0;
-  height: 0;
-  transform-style: preserve-3d;
-  transform: translateY(30px) scale(var(--s, 1)) rotateX(calc(-8deg - 14deg * var(--r))) rotateY(calc(-55deg + 110deg * var(--r)));
-}
-@media (max-width: 600px) { .printer { --s: 0.78; } .cube-stage { height: 380px; } }
-.printer-shadow {
-  position: absolute;
-  left: 50%;
-  bottom: 40px;
-  width: 300px;
-  height: 50px;
-  margin-left: -150px;
-  border-radius: 50%;
-  background: radial-gradient(rgba(0, 0, 0, 0.18), transparent 70%);
-}
-
-/* Ein Quader aus 6 Flächen; Größe über --w / --h / --d */
-.box { position: absolute; left: 0; top: 0; transform-style: preserve-3d; }
-.box > i { position: absolute; display: block; box-sizing: border-box; }
-.box > .fr, .box > .bk { width: var(--w); height: var(--h); left: calc(var(--w) / -2); top: calc(var(--h) / -2); }
-.box > .rt, .box > .lf { width: var(--d); height: var(--h); left: calc(var(--d) / -2); top: calc(var(--h) / -2); }
-.box > .tp, .box > .bt { width: var(--w); height: var(--d); left: calc(var(--w) / -2); top: calc(var(--d) / -2); }
-.box > .fr { transform: translateZ(calc(var(--d) / 2)); }
-.box > .bk { transform: rotateY(180deg) translateZ(calc(var(--d) / 2)); }
-.box > .rt { transform: rotateY(90deg) translateZ(calc(var(--w) / 2)); }
-.box > .lf { transform: rotateY(-90deg) translateZ(calc(var(--w) / 2)); }
-.box > .tp { transform: rotateX(90deg) translateZ(calc(var(--h) / 2)); }
-.box > .bt { transform: rotateX(-90deg) translateZ(calc(var(--h) / 2)); }
-
-/* Gehäuse: dunkel, vorne und oben Glas */
-.body > i { background: linear-gradient(160deg, #3a3a3e, #1c1c1f); border-radius: 12px; }
-.body > .rt { filter: brightness(1.2); }
-.body > .lf { filter: brightness(0.75); }
-.body > .fr, .body > .tp { background: rgba(40, 40, 46, 0.22); border: 10px solid #26262a; }
-.body > .fr::after { content: ""; position: absolute; right: 8px; top: 30%; width: 4px; height: 40%; border-radius: 4px; background: #8e8e93; }
-
-/* Materialeinheit mit 4 Spulen */
-.ams > i { background: #e5e5ea; border-radius: 10px; }
-.ams > .lf { filter: brightness(0.85); }
-.ams > .fr { display: flex; align-items: center; justify-content: space-evenly; background: linear-gradient(#f5f5f7, #d8d8dd); }
-.ams > .fr b { width: 30px; height: 30px; border-radius: 50%; border: 5px solid rgba(0, 0, 0, 0.15); }
-.ams > .fr b:nth-child(1) { background: #34c759; }
-.ams > .fr b:nth-child(2) { background: #0071e3; }
-.ams > .fr b:nth-child(3) { background: #ff9f0a; }
-.ams > .fr b:nth-child(4) { background: #f5f5f7; }
-
-/* Druckplatte, Führungsstange, Druckkopf */
-.plate > i { background: #2c2c30; }
-.plate > .tp { background: repeating-linear-gradient(45deg, #45454b 0 6px, #3a3a40 6px 12px); }
-.rod > i { background: linear-gradient(#e5e5ea, #8e8e93); }
-.head > i { background: #d1d1d6; border-radius: 6px; }
-.head > .fr { background: radial-gradient(circle at 50% 40%, #8e8e93 0 8px, transparent 9px), linear-gradient(#f2f2f7, #c7c7cc); }
-.head-move { position: absolute; transform-style: preserve-3d; animation: head 2.6s ease-in-out infinite alternate; }
-@keyframes head { from { transform: translateX(-62px); } to { transform: translateX(62px); } }
-
-/* Das Druckteil wächst beim Scrollen */
-.print-grow { position: absolute; transform-style: preserve-3d; transform: translateY(69px) scaleY(calc(0.08 + 0.92 * var(--r))); transform-origin: 0 0; }
-.print > i { background: linear-gradient(#4cd964, #1f9d48); border-radius: 4px; }
-.print > .tp { background: #5ee07a; }
-.print > .lf { filter: brightness(0.8); }
+/* Eigenes 3D-Modell */
+.model-stage { height: 440px; margin: 0 auto; max-width: 820px; }
+@media (max-width: 600px) { .model-stage { height: 300px; } }
+.model-stage canvas, .card-model canvas { display: block; width: 100%; height: 100%; opacity: 0; transition: opacity 1s var(--ease); }
+.model-stage.ready canvas, .card-model.ready canvas { opacity: 1; }
+.model-caption { color: var(--muted); font-size: 1rem; margin-top: 8px; }
 
 /* Instagram-Kachel */
 .ig-tile {

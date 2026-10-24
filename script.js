@@ -35,7 +35,6 @@ const lightups = [...document.querySelectorAll("[data-lightup]")].map((el) => {
 });
 
 const zooms = [...document.querySelectorAll("[data-zoom]")];
-const cubes = [...document.querySelectorAll("[data-cube]")];
 
 // Intro: Startzustand (groß + mittig) aus der Endposition berechnen
 const intro = document.querySelector("[data-intro]");
@@ -92,13 +91,6 @@ function onScroll() {
     const r = z.getBoundingClientRect();
     const p = clamp(-r.top / (r.height - vh));
     z.querySelector(".zoom-media").style.setProperty("--p", p.toFixed(3));
-  });
-
-  // Würfel dreht sich, während er durchs Bild läuft
-  cubes.forEach((c) => {
-    const r = c.getBoundingClientRect();
-    const p = clamp((vh - r.top) / (vh + r.height));
-    c.style.setProperty("--r", p.toFixed(3));
   });
 
   // Wörter leuchten nacheinander auf, während der Absatz nach oben wandert

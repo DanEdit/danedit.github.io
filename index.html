@@ -20,7 +20,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=11">
+  <link rel="stylesheet" href="style.css?v=12">
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
 </head>
 <body>
 
@@ -76,7 +82,7 @@
           <p class="card-eyebrow">MakerWorld</p>
           <h3>26 Modelle.<br>Zum Selberdrucken.</h3>
         </div>
-        <div class="mini-cube" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="card-model" data-model="modelle/rack-keystone.stl" data-color="#f5f5f7" aria-hidden="true"></div>
         <span class="card-plus">+</span>
       </a>
       <a class="card card-ig" href="https://www.instagram.com/_danedit_/" target="_blank" rel="noopener">
@@ -126,24 +132,9 @@
     <div class="wrap">
       <p class="eyebrow reveal">MakerWorld</p>
       <h2 class="chapter-title reveal">Gedruckt. Geteilt.</h2>
-      <!-- 3D-Drucker aus reinem CSS: dreht sich beim Scrollen, das Druckteil wächst -->
-      <div class="cube-stage" data-cube role="img" aria-label="3D-Drucker">
-        <div class="printer">
-          <div class="box body" style="--w:220px;--h:220px;--d:220px"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
-          <div class="box ams" style="--w:200px;--h:52px;--d:150px;transform:translate3d(0,-136px,0)">
-            <i class="fr"><b></b><b></b><b></b><b></b></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i>
-          </div>
-          <div class="box plate" style="--w:176px;--h:6px;--d:176px;transform:translate3d(0,72px,0)"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
-          <div class="print-grow">
-            <div class="box print" style="--w:56px;--h:44px;--d:56px;transform:translate3d(0,-22px,0)"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
-          </div>
-          <div class="box rod" style="--w:196px;--h:6px;--d:6px;transform:translate3d(0,-30px,0)"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
-          <div class="head-move">
-            <div class="box head" style="--w:42px;--h:48px;--d:42px;transform:translate3d(0,-30px,0)"><i class="fr"></i><i class="bk"></i><i class="rt"></i><i class="lf"></i><i class="tp"></i><i class="bt"></i></div>
-          </div>
-        </div>
-        <div class="printer-shadow"></div>
-      </div>
+      <!-- Eigenes 3D-Modell (aus der 3MF umgewandelt), dreht sich beim Scrollen -->
+      <div class="model-stage" data-model="modelle/rack-keystone.stl" data-scroll role="img" aria-label="3D-Modell: 19-Zoll-Rack-Halterung für den Homey Pro"></div>
+      <p class="model-caption reveal">19-Zoll-Rack-Halterung für den Homey Pro mit Keystone – eines meiner Modelle.</p>
       <p class="lightup" data-lightup>Am Rechner konstruiert, auf dem Drucker getestet und kostenlos geteilt: praktische Teile für den Alltag – von der 19-Zoll-Rack-Blende bis zur eScooter-Wandhalterung.</p>
       <div class="stats reveal">
         <div><span class="stat" data-count="26">0</span><small>Modelle</small></div>
@@ -208,6 +199,7 @@
 
   <div class="toast" id="toast" role="status"></div>
 
-  <script src="script.js?v=11"></script>
+  <script src="script.js?v=12"></script>
+  <script type="module" src="model.js?v=12"></script>
 </body>
 </html>
