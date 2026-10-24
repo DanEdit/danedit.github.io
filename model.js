@@ -1,7 +1,8 @@
 // ==========================================================
 // DANEDIT – 3D-Modelle (STL) mit three.js drehen lassen
-// <div data-model="modelle/x.stl" data-color="#34c759" data-scroll>
+// <div data-model="modelle/x.stl" data-color="#34c759" data-scroll data-fit="0.85">
 //   data-scroll: Drehung folgt dem Scrollen, sonst dreht es sich von selbst
+//   data-fit: Kameraabstand (kleiner = Modell größer), Standard 1.02
 // ==========================================================
 import * as THREE from "three";
 import { STLLoader } from "three/addons/loaders/STLLoader.js";
@@ -53,28 +54,32 @@ document.querySelectorAll("[data-model]").forEach(async (stage) => {
     camera.aspect = w / h;
     const vFov = THREE.MathUtils.degToRad(camera.fov);
     const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
-    const dist = (radius / Math.sin(Math.min(vFov, hFov) / 2)) * 1.02;
+    const dist = (radius / Math.sin(Math.min(vFov, hFov) / 2)) * (parseFloat(stage.dataset.fit) || 1.02);
     camera.position.set(0, radius * 0.3, dist);
     camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
   }
-  resize();
-  addEventListener("resize", resize);
-
-  // Nur rendern, solange es sichtbar ist (schont den Akku)
-  let visible = false;
-  new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(stage);
-
+  // Scroll-Modelle nur neu zeichnen, wenn sich etwas geändert hat (schont den Akku)
   const scrollMode = "scroll" in stage.dataset;
+  let dirty = true;
+  if (scrollMode) addEventListener("scroll", () => (dirty = true), { passive: true });
+  addEventListener("resize", () => { resize(); dirty = true; });
+  resize();
+
+  // Nur rendern, solange es sichtbar ist
+  let visible = false;
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; dirty = true; }).observe(stage);
+
   const t0 = performance.now();
   function frame(now) {
     requestAnimationFrame(frame);
-    if (!visible) return;
+    if (!visible || (scrollMode && !dirty)) return;
+    dirty = false;
     const t = reduceMotion ? 0 : (now - t0) / 1000;
     if (scrollMode) {
       const r = stage.getBoundingClientRect();
       const p = reduceMotion ? 0.5 : clamp((innerHeight - r.top) / (innerHeight + r.height));
-      pivot.rotation.y = -1.2 + p * Math.PI * 1.5 + t * 0.08;
+      pivot.rotation.y = -1.2 + p * Math.PI * 1.5;
       pivot.rotation.x = 0.45 - p * 0.35;
     } else {
       pivot.rotation.y = t * 0.5;
