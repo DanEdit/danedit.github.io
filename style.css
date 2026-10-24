@@ -236,24 +236,10 @@ button { font: inherit; cursor: pointer; }
   box-shadow: 0 30px 60px rgba(0, 0, 0, calc(0.18 * (1 - var(--p))));
 }
 .zoom-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; transform: scale(calc(1.25 - 0.15 * var(--p))); }
-.zoom-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 55%, rgba(0, 0, 0, 0.55)); opacity: var(--p); }
-.zoom-caption { z-index: 1; }
 @media (max-width: 700px) {
   .zoom-media { width: calc(86% + 14% * var(--p)); aspect-ratio: 4 / 5; }
 }
-.zoom-caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 6%;
-  color: #fff;
-  font-size: clamp(1.3rem, 3.5vw, 2.4rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-  opacity: calc((var(--p) - 0.55) * 3);
-  transform: translateY(calc(30px * (1 - var(--p))));
-}
+
 
 /* Text leuchtet beim Scrollen Wort für Wort auf */
 .lightup {
@@ -288,7 +274,7 @@ button { font: inherit; cursor: pointer; }
 @media (max-width: 600px) { .model-stage { height: 300px; } }
 .model-stage canvas, .card-model canvas { display: block; width: 100%; height: 100%; opacity: 0; transition: opacity 1s var(--ease); }
 .model-stage.ready canvas, .card-model.ready canvas { opacity: 1; }
-.model-caption { color: var(--muted); font-size: 1rem; margin-top: 8px; }
+
 
 /* Instagram: eigenes Foto */
 .ig-photo {
