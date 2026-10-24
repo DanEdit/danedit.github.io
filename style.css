@@ -76,17 +76,20 @@ button { font: inherit; cursor: pointer; }
 
 .eyebrow { color: var(--muted); font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; }
 
-/* ---------- Hero ---------- */
-.hero {
+/* ---------- Hero / Intro ---------- */
+/* Der Hero ist höher als der Bildschirm: Solange man durch ihn scrollt,
+   bleibt der Inhalt stehen und wandert vom Intro in die Endposition. */
+.hero { height: calc(100vh - 52px + 90vh); height: calc(100svh - 52px + 90vh); position: relative; text-align: center; }
+.hero-sticky {
+  position: sticky;
+  top: 52px;
   height: calc(100vh - 52px);
   height: calc(100svh - 52px);
   min-height: 560px;
   display: grid;
   place-items: center;
-  text-align: center;
   overflow: hidden;
 }
-.hero-inner { will-change: transform, opacity; }
 .avatar {
   width: 104px;
   height: 104px;
@@ -94,11 +97,11 @@ button { font: inherit; cursor: pointer; }
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  animation: rise 1.2s var(--ease) both;
+  animation: fade-in 1.4s var(--ease) both;
 }
 .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-.hero .eyebrow { animation: rise 1.2s var(--ease) 0.15s both; }
 .hero-title {
+  display: inline-block;
   font-size: clamp(4rem, 17vw, 9.5rem);
   font-weight: 700;
   line-height: 1;
@@ -108,7 +111,7 @@ button { font: inherit; cursor: pointer; }
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: rise 1.4s var(--ease) 0.25s both;
+  animation: fade-in 1.6s var(--ease) 0.2s both;
 }
 .hero-sub {
   font-size: clamp(1.4rem, 4vw, 2rem);
@@ -116,10 +119,24 @@ button { font: inherit; cursor: pointer; }
   line-height: 1.2;
   letter-spacing: -0.03em;
   margin-top: 16px;
-  animation: rise 1.4s var(--ease) 0.4s both;
 }
-.hero .cta-row { animation: rise 1.4s var(--ease) 0.55s both; }
-@keyframes rise { from { opacity: 0; transform: translateY(40px); } }
+/* Diese Teile erscheinen erst beim Scrollen */
+[data-later] { opacity: 0; }
+.scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg) scale(0.6);
+  animation: hint 2s var(--ease) 1.5s infinite both;
+  transition: opacity 0.3s;
+}
+@keyframes hint { 0%, 100% { translate: 0 0; } 50% { translate: 0 10px; } }
+@keyframes fade-in { from { opacity: 0; } }
 
 /* ---------- Highlights-Galerie ---------- */
 .highlights { background: var(--bg-alt); padding: 100px 0 60px; }
@@ -403,6 +420,10 @@ button { font: inherit; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal, .reveal-scale { opacity: 1; transform: none; }
+  .hero { height: auto; }
+  .hero-sticky { position: static; }
+  [data-later] { opacity: 1; }
+  .scroll-hint { display: none; }
   .zoom { height: auto; }
   .zoom-sticky { position: static; height: auto; padding: 0 22px; }
   .zoom-media { --p: 1 !important; border-radius: 28px; }

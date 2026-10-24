@@ -34,19 +34,57 @@ const lightups = [...document.querySelectorAll("[data-lightup]")].map((el) => {
   return { el, words: [...el.children] };
 });
 
-const hero = document.querySelector("[data-hero]");
 const zooms = [...document.querySelectorAll("[data-zoom]")];
 const cubes = [...document.querySelectorAll("[data-cube]")];
+
+// Intro: Startzustand (groß + mittig) aus der Endposition berechnen
+const intro = document.querySelector("[data-intro]");
+const introStage = intro && intro.querySelector(".hero-sticky");
+const introAvatar = intro && intro.querySelector("[data-intro-avatar]");
+const introTitle = intro && intro.querySelector("[data-intro-title]");
+const introLater = intro ? [...intro.querySelectorAll("[data-later]")] : [];
+const introHint = intro && intro.querySelector("[data-hint]");
+let introGeo = null;
+
+function measureIntro() {
+  if (!intro) return;
+  introAvatar.style.transform = introTitle.style.transform = "";
+  const box = introStage.getBoundingClientRect();
+  const a = introAvatar.getBoundingClientRect();
+  const t = introTitle.getBoundingClientRect();
+  // Startgrößen: Bild deutlich größer, Name so groß wie es die Breite zulässt
+  const A = Math.min(240, innerWidth * 0.55, box.height * 0.32) / a.height;
+  const T = Math.min(1.45, (innerWidth * 0.9) / t.width);
+  const gap = 28;
+  const total = a.height * A + gap + t.height * T;
+  const top = (box.height - total) / 2;
+  introGeo = {
+    A, T,
+    dyA: top + (a.height * A) / 2 - (a.top - box.top + a.height / 2),
+    dyT: top + a.height * A + gap + (t.height * T) / 2 - (t.top - box.top + t.height / 2),
+  };
+}
+
+const easeInOut = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);
 
 // Alle scroll-gesteuerten Effekte in einem Frame berechnen
 function onScroll() {
   const vh = innerHeight;
 
-  // Hero weicht beim Scrollen zurück
-  if (hero) {
-    const p = clamp(scrollY / (vh * 0.7));
-    hero.style.transform = `translateY(${p * 60}px) scale(${1 - p * 0.12})`;
-    hero.style.opacity = 1 - p;
+  // Intro: Bild + Name schrumpfen an ihren Platz, Rest blendet ein
+  if (introGeo) {
+    const r = intro.getBoundingClientRect();
+    const p = clamp(-r.top / (r.height - introStage.offsetHeight));
+    const k = 1 - easeInOut(p);
+    const { A, T, dyA, dyT } = introGeo;
+    introAvatar.style.transform = `translateY(${dyA * k}px) scale(${1 + (A - 1) * k})`;
+    introTitle.style.transform = `translateY(${dyT * k}px) scale(${1 + (T - 1) * k})`;
+    introLater.forEach((el, i) => {
+      const q = clamp((p - 0.45 - i * 0.1) / 0.25);
+      el.style.opacity = q;
+      el.style.transform = `translateY(${24 * (1 - q)}px)`;
+    });
+    introHint.style.opacity = clamp(1 - p * 5);
   }
 
   // Bild wächst, solange es "klebt"
@@ -79,8 +117,10 @@ if (!reduceMotion) {
     ticking = true;
     requestAnimationFrame(() => { onScroll(); ticking = false; });
   }, { passive: true });
-  addEventListener("resize", onScroll);
-  onScroll();
+  const relayout = () => { measureIntro(); onScroll(); };
+  addEventListener("resize", relayout);
+  if (document.fonts) document.fonts.ready.then(relayout);
+  relayout();
 }
 
 // Einblenden + Zahlen hochzählen
