@@ -122,6 +122,29 @@ document.querySelectorAll(".thumb[data-video-id]").forEach((thumb) => {
   }, { once: true });
 });
 
+// Profilbild: neuestes Bild aus dem Ordner "profilbild" im Repo verwenden,
+// sonst bleibt das im HTML eingetragene Bild stehen
+const avatar = document.querySelector(".avatar-frame img[data-folder]");
+if (avatar) {
+  const api = "https://api.github.com/repos/DanEdit/danedit.github.io";
+  const dir = avatar.dataset.folder;
+  fetch(`${api}/contents/${dir}`)
+    .then((r) => (r.ok ? r.json() : []))
+    .then(async (files) => {
+      const imgs = files.filter((f) => /\.(jpe?g|png|webp|gif|avif)$/i.test(f.name));
+      if (!imgs.length) return;
+      // Datum des letzten Commits je Bild -> neuestes gewinnt
+      const dates = await Promise.all(imgs.map((f) =>
+        fetch(`${api}/commits?path=${encodeURIComponent(f.path)}&per_page=1`)
+          .then((r) => (r.ok ? r.json() : []))
+          .then((c) => (c[0] ? c[0].commit.committer.date : ""))
+      ));
+      const newest = imgs[dates.indexOf([...dates].sort().pop())];
+      avatar.src = newest.path.split("/").map(encodeURIComponent).join("/");
+    })
+    .catch(() => {});
+}
+
 // CAD-Bilder: Emoji anzeigen, solange das Bild fehlt
 document.querySelectorAll(".model-img img").forEach((img) => {
   const missing = () => img.parentNode.classList.add("missing");
