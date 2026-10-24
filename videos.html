@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danedit – Videos</title>
+  <meta name="description" content="Die besten Videos von Danedit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="logo">DAN<span>EDIT</span></a>
+      <button class="burger" aria-label="Menü öffnen">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ueber-mich.html">Über mich</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-head">
+    <div class="container">
+      <p class="tagline">// MEDIATHEK GELADEN</p>
+      <h1 class="section-title">Meine <span class="accent">Videos</span></h1>
+      <p class="section-sub">Eine Auswahl meiner Lieblingsvideos. Klick drauf, um sie direkt hier abzuspielen.</p>
+    </div>
+  </header>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <!-- ANPASSEN: Kategorien (data-filter muss zu data-category der Videos passen) -->
+      <div class="filters">
+        <button class="active" data-filter="all">ALLE</button>
+        <button data-filter="edit">EDITS</button>
+        <button data-filter="tutorial">TUTORIALS</button>
+        <button data-filter="sonstiges">SONSTIGES</button>
+      </div>
+
+      <!--
+        ANPASSEN: So fügst du ein Video ein:
+        Aus dem Link https://www.youtube.com/watch?v=ABC123xyz
+        nimmst du den Teil nach "v=" (hier: ABC123xyz) und trägst ihn bei data-video-id="" ein.
+        Vorschaubild und Player werden dann automatisch geladen.
+      -->
+      <div class="grid">
+        <article class="card video-card reveal" data-category="edit">
+          <div class="thumb" data-video-id=""><div class="play">▶</div></div>
+          <div class="video-body">
+            <span class="tag">EDIT</span>
+            <h3>Videotitel 1</h3>
+            <p>Kurze Beschreibung des Videos.</p>
+          </div>
+        </article>
+        <article class="card video-card reveal" data-category="edit">
+          <div class="thumb" data-video-id=""><div class="play">▶</div></div>
+          <div class="video-body">
+            <span class="tag">EDIT</span>
+            <h3>Videotitel 2</h3>
+            <p>Kurze Beschreibung des Videos.</p>
+          </div>
+        </article>
+        <article class="card video-card reveal" data-category="tutorial">
+          <div class="thumb" data-video-id=""><div class="play">▶</div></div>
+          <div class="video-body">
+            <span class="tag">TUTORIAL</span>
+            <h3>Videotitel 3</h3>
+            <p>Kurze Beschreibung des Videos.</p>
+          </div>
+        </article>
+        <article class="card video-card reveal" data-category="tutorial">
+          <div class="thumb" data-video-id=""><div class="play">▶</div></div>
+          <div class="video-body">
+            <span class="tag">TUTORIAL</span>
+            <h3>Videotitel 4</h3>
+            <p>Kurze Beschreibung des Videos.</p>
+          </div>
+        </article>
+        <article class="card video-card reveal" data-category="sonstiges">
+          <div class="thumb" data-video-id=""><div class="play">▶</div></div>
+          <div class="video-body">
+            <span class="tag">SONSTIGES</span>
+            <h3>Videotitel 5</h3>
+            <p>Kurze Beschreibung des Videos.</p>
+          </div>
+        </article>
+        <article class="card video-card reveal" data-category="sonstiges">
+          <div class="thumb" data-video-id=""><div class="play">▶</div></div>
+          <div class="video-body">
+            <span class="tag">SONSTIGES</span>
+            <h3>Videotitel 6</h3>
+            <p>Kurze Beschreibung des Videos.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="btn-row" style="margin-top:56px">
+        <a class="btn" href="https://www.youtube.com/@Danedit/videos" target="_blank" rel="noopener">Alle Videos auf YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="logo">DAN<span>EDIT</span></p>
+      <p>© 2026 Danedit · Alle Rechte vorbehalten</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

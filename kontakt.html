@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danedit – Kontakt</title>
+  <meta name="description" content="Kontakt zu Danedit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="logo">DAN<span>EDIT</span></a>
+      <button class="burger" aria-label="Menü öffnen">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ueber-mich.html">Über mich</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-head">
+    <div class="container">
+      <p class="tagline">// VERBINDUNG HERSTELLEN</p>
+      <h1 class="section-title">Kon<span class="accent">takt</span></h1>
+      <p class="section-sub">Fragen, Ideen oder Kooperationen? Schreib mir!</p>
+    </div>
+  </header>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <!-- ANPASSEN: Links zu deinen Social-Media-Profilen (nicht benötigte Karten löschen) -->
+      <div class="socials">
+        <a class="card social reveal" href="https://www.youtube.com/@Danedit" target="_blank" rel="noopener">
+          <div class="icon">▶️</div><h3>YOUTUBE</h3><p>@Danedit</p>
+        </a>
+        <a class="card social reveal" href="https://www.tiktok.com/@DEIN_NAME" target="_blank" rel="noopener">
+          <div class="icon">🎵</div><h3>TIKTOK</h3><p>@DEIN_NAME</p>
+        </a>
+        <a class="card social reveal" href="https://www.instagram.com/DEIN_NAME" target="_blank" rel="noopener">
+          <div class="icon">📸</div><h3>INSTAGRAM</h3><p>@DEIN_NAME</p>
+        </a>
+        <a class="card social reveal" href="https://discord.gg/DEIN_INVITE" target="_blank" rel="noopener">
+          <div class="icon">💬</div><h3>DISCORD</h3><p>Community beitreten</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <!-- ANPASSEN: Deine E-Mail-Adresse bei data-mail eintragen -->
+      <form class="terminal reveal" data-mail="deine-email@beispiel.de">
+        <div class="term-bar"><i></i><i></i><i></i> NACHRICHT.SH</div>
+        <div class="term-body">
+          <label>NAME<input name="name" required autocomplete="name"></label>
+          <label>E-MAIL<input name="email" type="email" required autocomplete="email"></label>
+          <label>NACHRICHT<textarea name="message" required></textarea></label>
+          <div><button class="btn" type="submit">Senden ⟶</button></div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="logo">DAN<span>EDIT</span></p>
+      <p>© 2026 Danedit · Alle Rechte vorbehalten</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
