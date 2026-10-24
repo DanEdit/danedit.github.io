@@ -121,6 +121,13 @@ document.querySelectorAll(".thumb[data-video-id]").forEach((thumb) => {
   }, { once: true });
 });
 
+// CAD-Bilder: Emoji anzeigen, solange das Bild fehlt
+document.querySelectorAll(".model-img img").forEach((img) => {
+  const missing = () => img.parentNode.classList.add("missing");
+  if (img.complete && !img.naturalWidth) missing();
+  img.addEventListener("error", missing);
+});
+
 // Video-Filter
 document.querySelectorAll(".filters button").forEach((btn) => {
   btn.addEventListener("click", () => {
