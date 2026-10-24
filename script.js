@@ -101,7 +101,8 @@ function countUp(el) {
   const start = performance.now();
   (function step(now) {
     const p = Math.min((now - start) / 1500, 1);
-    el.textContent = Math.floor(target * p).toLocaleString("de-DE") + suffix;
+    const n = Math.floor(target * p);
+    el.textContent = ("year" in el.dataset ? n : n.toLocaleString("de-DE")) + suffix;
     if (p < 1) requestAnimationFrame(step);
   })(start);
 }
