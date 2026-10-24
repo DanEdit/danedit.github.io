@@ -251,7 +251,7 @@ a.card:hover { text-decoration: none; }
   font-size: 5rem;
   font-weight: 700;
 }
-.avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 
 .about p { margin-bottom: 18px; font-size: 1.15rem; }
 .about p strong { font-weight: 600; }
