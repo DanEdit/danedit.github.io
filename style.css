@@ -229,13 +229,13 @@ button { font: inherit; cursor: pointer; }
   --p: 0;
   position: relative;
   width: calc(62% + 38% * var(--p));
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
   max-height: 100%;
   border-radius: calc(28px * (1 - var(--p)));
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, calc(0.18 * (1 - var(--p))));
 }
-.zoom-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(calc(1.25 - 0.15 * var(--p))); }
+.zoom-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%; transform: scale(calc(1.25 - 0.15 * var(--p))); }
 .zoom-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 55%, rgba(0, 0, 0, 0.55)); opacity: var(--p); }
 .zoom-caption { z-index: 1; }
 @media (max-width: 700px) {
