@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danedit – CAD &amp; 3D-Druck</title>
+  <meta name="description" content="CAD-Konstruktionen und 3D-Druck-Modelle von DanEdit auf MakerWorld.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="logo">DAN<span>EDIT</span></a>
+      <button class="burger" aria-label="Menü öffnen">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ueber-mich.html">Über mich</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="cad.html">CAD</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-head">
+    <div class="container">
+      <p class="tagline">// 3D-DRUCK-MODUS AKTIV</p>
+      <h1 class="section-title">CAD &amp; <span class="accent">3D-Druck</span></h1>
+      <p class="section-sub">Neben Videos konstruiere ich praktische Teile für den Alltag – und teile sie kostenlos auf MakerWorld.</p>
+    </div>
+  </header>
+
+  <section style="padding-top:0">
+    <div class="container">
+      <div class="badges reveal">
+        <span class="badge">🛡️ MAKERWORLD GUARDIAN</span>
+        <span class="badge">🚀 PIONEER MAKER</span>
+      </div>
+      <!-- Zahlen vom MakerWorld-Profil (Stand Oktober 2026) -->
+      <div class="stats reveal">
+        <div><div class="stat-num" data-count="26">0</div><div class="stat-label">Modelle</div></div>
+        <div><div class="stat-num" data-count="35">0</div><div class="stat-label">Druckprofile</div></div>
+        <div><div class="stat-num" data-count="54">0</div><div class="stat-label">Follower</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title" style="text-align:center">Meine <span class="accent">Modelle</span></h2>
+      <p class="section-sub reveal">Eine Auswahl – klick auf ein Modell, um es auf MakerWorld herunterzuladen.</p>
+      <div class="grid">
+        <a class="card model-card reveal" href="https://makerworld.com/de/models/68373" target="_blank" rel="noopener">
+          <div class="icon">📸</div>
+          <span class="tag">DEKO</span>
+          <h3>Small Instax Picture Stand</h3>
+          <p>Kleiner Ständer für Instax- und Polaroid-Bilder – in unter einer Stunde gedruckt.</p>
+          <span class="more">ZUM MODELL ⟶</span>
+        </a>
+        <a class="card model-card reveal" href="https://makerworld.com/de/models/180344" target="_blank" rel="noopener">
+          <div class="icon">🪪</div>
+          <span class="tag">ALLTAG</span>
+          <h3>Ausweishülle / ID-Card Holder</h3>
+          <p>Schützende Hülle für Ausweis- und Scheckkarten.</p>
+          <span class="more">ZUM MODELL ⟶</span>
+        </a>
+        <a class="card model-card reveal" href="https://makerworld.com/de/@DanEdit/upload" target="_blank" rel="noopener">
+          <div class="icon">🖧</div>
+          <span class="tag">NETZWERK</span>
+          <h3>19 Zoll Rack Keystone Blende</h3>
+          <p>Keystone-Blende für das 19"-Netzwerkrack – sauber verkabelt im Homelab.</p>
+          <span class="more">ZUM MODELL ⟶</span>
+        </a>
+        <a class="card model-card reveal" href="https://makerworld.com/de/@DanEdit/upload" target="_blank" rel="noopener">
+          <div class="icon">💡</div>
+          <span class="tag">FOTO</span>
+          <h3>Mini Foto-Studio</h3>
+          <p>Kleines Foto-Studio für Produkt- und Detailaufnahmen – passt perfekt zum Filmen.</p>
+          <span class="more">ZUM MODELL ⟶</span>
+        </a>
+        <a class="card model-card reveal" href="https://makerworld.com/de/@DanEdit/upload" target="_blank" rel="noopener">
+          <div class="icon">🛴</div>
+          <span class="tag">MOBILITÄT</span>
+          <h3>Xiaomi Pro 1 / Pro 2 eScooter Wandhalterung</h3>
+          <p>Wandhalterung, damit der eScooter platzsparend an der Wand hängt.</p>
+          <span class="more">ZUM MODELL ⟶</span>
+        </a>
+        <a class="card model-card reveal" href="https://makerworld.com/de/@DanEdit/upload" target="_blank" rel="noopener">
+          <div class="icon">❄️</div>
+          <span class="tag">HAUS</span>
+          <h3>90° Klimaanlagen-Schlauchadapter</h3>
+          <p>Winkeladapter für den Abluftschlauch der mobilen Klimaanlage.</p>
+          <span class="more">ZUM MODELL ⟶</span>
+        </a>
+        <a class="card model-card reveal" href="https://makerworld.com/de/@DanEdit/upload" target="_blank" rel="noopener">
+          <div class="icon">🍓</div>
+          <span class="tag">DEKO</span>
+          <h3>Himbeervase</h3>
+          <p>Dekorative Vase in Himbeer-Optik.</p>
+          <span class="more">ZUM MODELL ⟶</span>
+        </a>
+        <a class="card model-card reveal" href="https://makerworld.com/de/@DanEdit/upload" target="_blank" rel="noopener">
+          <div class="icon">➕</div>
+          <span class="tag">UND MEHR</span>
+          <h3>19 weitere Modelle</h3>
+          <p>Alle 26 Modelle und 35 Druckprofile findest du auf meinem MakerWorld-Profil.</p>
+          <span class="more">ALLE ANSEHEN ⟶</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title" style="text-align:center">Vom <span class="accent">Konzept</span> zum Druck</h2>
+      <p class="section-sub reveal">So entsteht ein Modell.</p>
+      <div class="grid steps">
+        <div class="card reveal"><div class="icon">🧠</div><h3>IDEE</h3><p>Ein Problem im Alltag – und die Frage: Kann ich das selbst drucken?</p></div>
+        <div class="card reveal"><div class="icon">📐</div><h3>CAD</h3><p>Ausmessen, konstruieren und jedes Detail am Rechner anpassen.</p></div>
+        <div class="card reveal"><div class="icon">🖨️</div><h3>TESTDRUCK</h3><p>Drucken, testen, verbessern – bis alles perfekt passt.</p></div>
+        <div class="card reveal"><div class="icon">🌍</div><h3>TEILEN</h3><p>Fertige Modelle mit Druckprofilen kostenlos auf MakerWorld.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container" style="text-align:center">
+      <h2 class="section-title">Lust zu <span class="accent">drucken</span>?</h2>
+      <p class="section-sub reveal">Folge mir auf MakerWorld und verpasse kein neues Modell.</p>
+      <div class="btn-row reveal">
+        <a class="btn" href="https://makerworld.com/de/@DanEdit" target="_blank" rel="noopener">Zu MakerWorld</a>
+        <a class="btn cyan" href="videos.html">Meine Videos</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="logo">DAN<span>EDIT</span></p>
+      <p>© 2026 Danedit · Alle Rechte vorbehalten</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -31,6 +31,18 @@ if (typed) {
   })();
 }
 
+// Animations-Varianten automatisch vergeben
+document.querySelectorAll(".page-head .section-title, .page-head .tagline, .page-head .section-sub").forEach((el) => el.classList.add("reveal"));
+document.querySelectorAll(".section-title").forEach((el) => el.classList.add("reveal", "zoom"));
+document.querySelectorAll(".grid > .reveal, .socials > .reveal").forEach((el) => el.classList.add("flip"));
+document.querySelectorAll(".about > .reveal").forEach((el, i) => el.classList.add(i ? "from-right" : "from-left"));
+document.querySelectorAll(".timeline > .reveal").forEach((el, i) => el.classList.add(i % 2 ? "from-right" : "from-left"));
+
+// Gestaffelte Verzögerung für Gruppen
+document.querySelectorAll(".grid, .socials, .stats, .timeline, .page-head .container").forEach((group) => {
+  [...group.children].filter((c) => c.classList.contains("reveal")).forEach((el, i) => el.style.setProperty("--d", `${(i % 6) * 120}ms`));
+});
+
 // Scroll-Reveal + Skill-Balken + Zähler
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -39,10 +51,49 @@ const observer = new IntersectionObserver((entries) => {
     el.classList.add("visible");
     el.querySelectorAll(".bar span").forEach((bar) => (bar.style.width = bar.dataset.value + "%"));
     el.querySelectorAll(".stat-num").forEach(countUp);
+    // Nach der Animation aufräumen, damit Hover-Effekte wieder schnell reagieren
+    el.addEventListener("transitionend", function done(e) {
+      if (e.target !== el || e.propertyName !== "transform") return;
+      el.classList.remove("reveal", "from-left", "from-right", "zoom", "flip");
+      el.style.removeProperty("--d");
+      el.removeEventListener("transitionend", done);
+    });
     observer.unobserve(el);
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+// Scroll-Fortschrittsbalken + Parallax im Hero
+const progress = document.createElement("div");
+progress.id = "progress";
+document.body.prepend(progress);
+const heroInner = document.querySelector(".hero .container");
+let ticking = false;
+addEventListener("scroll", () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    const y = scrollY;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    if (heroInner && y < innerHeight) {
+      heroInner.style.transform = `translateY(${y * 0.4}px) scale(${1 - y / 3000})`;
+      heroInner.style.opacity = Math.max(0, 1 - y / 600);
+    }
+    ticking = false;
+  });
+}, { passive: true });
+
+// Sanfte Seitenübergänge zwischen den Unterseiten
+document.querySelectorAll('a[href$=".html"]').forEach((a) => {
+  a.addEventListener("click", (e) => {
+    if (e.ctrlKey || e.metaKey || e.shiftKey || a.target === "_blank") return;
+    e.preventDefault();
+    document.body.classList.add("leaving");
+    setTimeout(() => (location.href = a.href), 280);
+  });
+});
+addEventListener("pageshow", () => document.body.classList.remove("leaving"));
 
 function countUp(el) {
   const target = parseInt(el.dataset.count, 10);
