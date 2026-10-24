@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>DanEdit</title>
   <meta name="description" content="Videos, 3D-Druck und Smart Home aus München – alle Links von DanEdit.">
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
   <meta name="apple-mobile-web-app-title" content="DanEdit">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -20,79 +20,178 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
-  <!-- Animierter Farbhintergrund -->
-  <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
 
-  <main class="page">
-    <header class="profile">
-      <div class="avatar anim" style="--i:0">
+  <!-- Produkt-Navigation wie auf apple.com -->
+  <nav class="localnav">
+    <div class="wrap">
+      <a class="localnav-title" href="#top">DanEdit</a>
+      <div class="localnav-links">
+        <a href="#videos">Videos</a>
+        <a href="#makerworld">3D-Druck</a>
+        <a href="#instagram">Instagram</a>
+      </div>
+      <button class="pill small" data-share>Teilen</button>
+    </div>
+  </nav>
+
+  <!-- Hero: wird beim Scrollen kleiner und blendet aus -->
+  <header class="hero" id="top">
+    <div class="hero-inner" data-hero>
+      <div class="avatar">
         <!-- Neuestes Bild aus dem Ordner "profilbild" wird automatisch geladen -->
         <img data-folder="profilbild" src="profilbild/DSCF2555(1).JPG" alt="DanEdit">
       </div>
-      <h1 class="name anim" style="--i:1">DanEdit</h1>
-      <p class="intro anim" style="--i:2">Ich filme, konstruiere und automatisiere – Videos, 3D-Druck und Smart Home aus München.</p>
-    </header>
+      <p class="eyebrow">Hallo, ich bin</p>
+      <h1 class="hero-title">DanEdit</h1>
+      <p class="hero-sub">Filmen. Konstruieren. Teilen.<br>Aus München.</p>
+      <div class="cta-row">
+        <a class="pill" href="#videos">Videos ansehen</a>
+        <a class="more" href="#makerworld">Modelle entdecken</a>
+      </div>
+    </div>
+  </header>
 
-    <nav class="links">
-      <a class="link anim" style="--i:3" href="https://www.youtube.com/@daneditmuc" target="_blank" rel="noopener">
-        <span class="link-icon yt">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.8 15.1V8.9L15.6 12l-5.8 3.1Z"/></svg>
-        </span>
-        <span class="link-text"><strong>YouTube</strong><small>Videos &amp; Edits · @daneditmuc</small></span>
-        <span class="chevron">›</span>
+  <!-- Highlights-Galerie -->
+  <section class="highlights">
+    <div class="wrap">
+      <h2 class="section-head reveal">Alles auf einen Blick.</h2>
+    </div>
+    <div class="gallery" data-gallery>
+      <a class="card card-yt" href="https://www.youtube.com/@daneditmuc" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/IqiHGHepqJE/maxresdefault.jpg" alt="" loading="lazy">
+        <div class="card-copy">
+          <p class="card-eyebrow">YouTube</p>
+          <h3>Cinematische Videos.<br>Seit 2017.</h3>
+        </div>
+        <span class="card-plus">+</span>
       </a>
-      <a class="link anim" style="--i:4" href="https://makerworld.com/de/@DanEdit" target="_blank" rel="noopener">
-        <span class="link-icon mw">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 2.5 7v10L12 22.5 21.5 17V7L12 1.5Zm0 2.3 7.2 4.1L12 12 4.8 7.9 12 3.8ZM4.5 9.6l6.5 3.7v7.1l-6.5-3.7V9.6Zm8.5 10.8v-7.1l6.5-3.7v7.1L13 20.4Z"/></svg>
-        </span>
-        <span class="link-text"><strong>MakerWorld</strong><small>Meine 3D-Druck-Modelle · @DanEdit</small></span>
-        <span class="chevron">›</span>
+      <a class="card card-mw" href="https://makerworld.com/de/@DanEdit" target="_blank" rel="noopener">
+        <div class="card-copy">
+          <p class="card-eyebrow">MakerWorld</p>
+          <h3>26 Modelle.<br>Zum Selberdrucken.</h3>
+        </div>
+        <div class="mini-cube" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <span class="card-plus">+</span>
       </a>
-      <a class="link anim" style="--i:5" href="https://www.instagram.com/_danedit_/" target="_blank" rel="noopener">
-        <span class="link-icon ig">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21.9 8.2c-.1-1.6-.4-3-1.6-4.1-1.1-1.1-2.5-1.5-4.1-1.6C14.6 2.4 9.4 2.4 7.8 2.5 6.2 2.6 4.8 3 3.7 4.1 2.6 5.2 2.2 6.6 2.1 8.2 2 9.8 2 15 2.1 16.6c.1 1.6.4 3 1.6 4.1 1.1 1.1 2.5 1.5 4.1 1.6 1.6.1 6.8.1 8.4 0 1.6-.1 3-.4 4.1-1.6 1.1-1.1 1.5-2.5 1.6-4.1.1-1.6.1-6.8 0-8.4Zm-2.1 10.1a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.9.4s-4.6.1-5.9-.4a3.3 3.3 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.9s-.1-4.6.4-5.9a3.3 3.3 0 0 1 1.9-1.9c1.3-.5 4.4-.4 5.9-.4s4.6-.1 5.9.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.9s.1 4.6-.4 5.9Z"/></svg>
-        </span>
-        <span class="link-text"><strong>Instagram</strong><small>Hinter den Kulissen · @_danedit_</small></span>
-        <span class="chevron">›</span>
+      <a class="card card-ig" href="https://www.instagram.com/_danedit_/" target="_blank" rel="noopener">
+        <div class="card-copy">
+          <p class="card-eyebrow">Instagram</p>
+          <h3>Hinter den Kulissen.</h3>
+        </div>
+        <svg class="card-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21.9 8.2c-.1-1.6-.4-3-1.6-4.1-1.1-1.1-2.5-1.5-4.1-1.6C14.6 2.4 9.4 2.4 7.8 2.5 6.2 2.6 4.8 3 3.7 4.1 2.6 5.2 2.2 6.6 2.1 8.2 2 9.8 2 15 2.1 16.6c.1 1.6.4 3 1.6 4.1 1.1 1.1 2.5 1.5 4.1 1.6 1.6.1 6.8.1 8.4 0 1.6-.1 3-.4 4.1-1.6 1.1-1.1 1.5-2.5 1.6-4.1.1-1.6.1-6.8 0-8.4Zm-2.1 10.1a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.9.4s-4.6.1-5.9-.4a3.3 3.3 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.9s-.1-4.6.4-5.9a3.3 3.3 0 0 1 1.9-1.9c1.3-.5 4.4-.4 5.9-.4s4.6-.1 5.9.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.9s.1 4.6-.4 5.9Z"/></svg>
+        <span class="card-plus">+</span>
       </a>
-    </nav>
+    </div>
+    <div class="gallery-controls">
+      <div class="dots" data-dots></div>
+    </div>
+  </section>
 
-    <section class="feature reveal">
-      <p class="label">Neuestes Video</p>
-      <a class="video" href="https://www.youtube.com/watch?v=aoiDziRfKMM" target="_blank" rel="noopener">
-        <img src="https://img.youtube.com/vi/aoiDziRfKMM/mqdefault.jpg" alt="" loading="lazy">
-        <span class="play">▶</span>
-        <span class="video-title">Budapest 2026 – Freestyle Battles</span>
+  <!-- YouTube: Bild bleibt stehen und zoomt auf volle Breite -->
+  <section class="chapter" id="videos">
+    <div class="wrap">
+      <p class="eyebrow reveal">YouTube</p>
+      <h2 class="chapter-title reveal">Bewegte Bilder.</h2>
+    </div>
+    <div class="zoom" data-zoom>
+      <div class="zoom-sticky">
+        <div class="zoom-media">
+          <img src="https://img.youtube.com/vi/ALi5dd7Y1z4/maxresdefault.jpg" alt="Streetlife Festival 2018 – Slalom Skater" loading="lazy">
+          <p class="zoom-caption">Streetlife Festival – über 81.000 Aufrufe</p>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="lightup" data-lightup>Autos, Eis und Events. Seit 2017 halte ich Momente in cinematischen Videos fest – von der IAA Mobility in München bis zu den Freestyle-Battles in Budapest.</p>
+      <div class="stats reveal">
+        <div><span class="stat" data-count="19">0</span><small>Videos</small></div>
+        <div><span class="stat" data-count="91000" data-suffix="+">0</span><small>Aufrufe</small></div>
+        <div><span class="stat" data-count="298">0</span><small>Abonnenten</small></div>
+      </div>
+      <div class="cta-row center reveal">
+        <a class="pill" href="https://www.youtube.com/@daneditmuc" target="_blank" rel="noopener">Auf YouTube ansehen</a>
+        <a class="more" href="https://www.youtube.com/watch?v=aoiDziRfKMM" target="_blank" rel="noopener">Neuestes Video</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MakerWorld: Würfel dreht sich beim Scrollen -->
+  <section class="chapter alt" id="makerworld">
+    <div class="wrap">
+      <p class="eyebrow reveal">MakerWorld</p>
+      <h2 class="chapter-title reveal">Gedruckt. Geteilt.</h2>
+      <div class="cube-stage" data-cube>
+        <div class="cube">
+          <i class="f1"></i><i class="f2"></i><i class="f3"></i><i class="f4"></i><i class="f5"></i><i class="f6"></i>
+        </div>
+      </div>
+      <p class="lightup" data-lightup>Am Rechner konstruiert, auf dem Drucker getestet und kostenlos geteilt: praktische Teile für den Alltag – von der 19-Zoll-Rack-Blende bis zur eScooter-Wandhalterung.</p>
+      <div class="stats reveal">
+        <div><span class="stat" data-count="26">0</span><small>Modelle</small></div>
+        <div><span class="stat" data-count="35">0</span><small>Druckprofile</small></div>
+        <div><span class="stat-text">Pioneer</span><small>Maker</small></div>
+      </div>
+      <div class="cta-row center reveal">
+        <a class="pill" href="https://makerworld.com/de/@DanEdit" target="_blank" rel="noopener">Modelle entdecken</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="chapter" id="instagram">
+    <div class="wrap">
+      <p class="eyebrow reveal">Instagram</p>
+      <h2 class="chapter-title reveal">Hinter den Kulissen.</h2>
+      <a class="ig-tile reveal-scale" href="https://www.instagram.com/_danedit_/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4Zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21.9 8.2c-.1-1.6-.4-3-1.6-4.1-1.1-1.1-2.5-1.5-4.1-1.6C14.6 2.4 9.4 2.4 7.8 2.5 6.2 2.6 4.8 3 3.7 4.1 2.6 5.2 2.2 6.6 2.1 8.2 2 9.8 2 15 2.1 16.6c.1 1.6.4 3 1.6 4.1 1.1 1.1 2.5 1.5 4.1 1.6 1.6.1 6.8.1 8.4 0 1.6-.1 3-.4 4.1-1.6 1.1-1.1 1.5-2.5 1.6-4.1.1-1.6.1-6.8 0-8.4Zm-2.1 10.1a3.3 3.3 0 0 1-1.9 1.9c-1.3.5-4.4.4-5.9.4s-4.6.1-5.9-.4a3.3 3.3 0 0 1-1.9-1.9c-.5-1.3-.4-4.4-.4-5.9s-.1-4.6.4-5.9a3.3 3.3 0 0 1 1.9-1.9c1.3-.5 4.4-.4 5.9-.4s4.6-.1 5.9.4a3.3 3.3 0 0 1 1.9 1.9c.5 1.3.4 4.4.4 5.9s.1 4.6-.4 5.9Z"/></svg>
+        <span>@_danedit_</span>
       </a>
-    </section>
+      <div class="cta-row center reveal">
+        <a class="pill" href="https://www.instagram.com/_danedit_/" target="_blank" rel="noopener">Folgen</a>
+      </div>
+    </div>
+  </section>
 
-    <section class="share reveal">
-      <p class="label">Gefällt dir die Seite?</p>
-      <button class="btn primary" id="share">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 7.8 6.7l1.4 1.4L11 6.3V15h2V6.3l1.8 1.8 1.4-1.4L12 2.5ZM5 10v10.5h14V10h-3v2h1v6.5H7V12h1v-2H5Z"/></svg>
-        Teilen
-      </button>
-      <button class="btn" id="qr-open">QR-Code anzeigen</button>
-      <p class="hint">Über „Teilen“ kannst du die Seite per AirDrop senden oder zum Home-Bildschirm hinzufügen.</p>
-    </section>
+  <!-- Teilen -->
+  <section class="chapter alt share" id="teilen">
+    <div class="wrap">
+      <h2 class="chapter-title reveal">Teile DanEdit.</h2>
+      <div class="share-grid">
+        <button class="share-card reveal" data-share>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 7.8 6.7l1.4 1.4L11 6.3V15h2V6.3l1.8 1.8 1.4-1.4L12 2.5ZM5 10v10.5h14V10h-3v2h1v6.5H7V12h1v-2H5Z"/></svg>
+          <strong>Teilen</strong>
+          <span>Per AirDrop, Nachrichten oder zum Home-Bildschirm hinzufügen.</span>
+        </button>
+        <button class="share-card reveal" id="qr-open">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3V3Zm2 2v4h4V5H5Zm8-2h8v8h-8V3Zm2 2v4h4V5h-4ZM3 13h8v8H3v-8Zm2 2v4h4v-4H5Zm8-2h2v2h-2v-2Zm2 2h2v2h-2v-2Zm2-2h4v2h-4v-2Zm2 2h2v4h-2v-4Zm-6 2h2v4h-2v-4Zm2 2h4v2h-4v-2Z"/></svg>
+          <strong>QR-Code</strong>
+          <span>Zum Scannen direkt vom Bildschirm.</span>
+        </button>
+      </div>
+    </div>
+  </section>
 
-    <footer>© 2026 DanEdit</footer>
-  </main>
+  <footer class="footer">
+    <div class="wrap">
+      <p>Videos, 3D-Druck und Smart Home aus München.</p>
+      <p>© 2026 DanEdit</p>
+    </div>
+  </footer>
 
   <!-- QR-Code-Fenster -->
   <div class="sheet" id="qr-sheet" hidden>
     <div class="sheet-card">
       <div id="qr"></div>
       <p>danedit.github.io</p>
-      <button class="btn" id="qr-close">Fertig</button>
+      <button class="pill" id="qr-close">Fertig</button>
     </div>
   </div>
 
   <div class="toast" id="toast" role="status"></div>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>
