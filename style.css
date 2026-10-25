@@ -184,16 +184,13 @@ button { font: inherit; cursor: pointer; }
 }
 .card:hover .card-plus { transform: rotate(90deg); }
 
-.card-yt { color: #fff; background: #000; }
-.card-yt img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-.card-yt:hover img { transform: scale(1.06); }
-.card-yt::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0, 0, 0, 0.55), transparent 45%); }
-.card-yt .card-plus { background: rgba(255, 255, 255, 0.85); color: #1d1d1f; }
+.card-photo { color: #fff; background: #000; }
+.card-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.card-photo:hover img { transform: scale(1.06); }
+.card-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0, 0, 0, 0.55), transparent 45%); }
+.card-photo .card-plus { background: rgba(255, 255, 255, 0.85); color: #1d1d1f; }
 
 .card-mw { background: linear-gradient(160deg, #e9f9ef, #c7efd6); }
-.card-ig { background: linear-gradient(160deg, #fff1e6, #ffd6e7 55%, #e8dcff); }
-.card-glyph { position: absolute; width: 58%; left: 21%; bottom: 14%; fill: #d62976; opacity: 0.9; transition: transform 1s var(--ease); }
-.card-ig:hover .card-glyph { transform: rotate(-8deg) scale(1.05); }
 
 /* 3D-Modell in der MakerWorld-Karte */
 .card-model { position: absolute; left: 0; right: 0; bottom: 10%; height: 55%; }
