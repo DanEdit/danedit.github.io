@@ -170,7 +170,7 @@ function showToast(text) {
 // Teilen: öffnet das System-Teilen-Menü (AirDrop, Nachrichten, Zum Home-Bildschirm …)
 const shareData = {
   title: "DanEdit",
-  text: "Videos, 3D-Druck und Smart Home aus München.",
+  text: "Videos, Fotografie und 3D-Druck aus München.",
   url: "https://danedit.github.io/",
 };
 document.querySelectorAll("[data-share]").forEach((btn) => btn.addEventListener("click", async () => {
